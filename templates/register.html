@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block heading %}
+  Home Page
+{% endblock %}
+{% block body %}
+<form action={{ url_for('register') }} method="post">
+  <div>
+    <label for="newuser">Username: </label>
+    <input name="newuser" id="newuser" type="text" placeholder="Username">
+  </div>
+  <div>
+    <label for="regpass">Password: </label>
+    <input name="regpass" id="regpass" type="Password">
+  </div>
+  <div>
+    <label for="confirmpass">Confirm Password: </label>
+    <input name="confirmpass" id="confirmpass" type="Password">
+  </div>
+  <div>
+    <button>Register</button>
+  </div>
+</form>
+
+
+{% endblock %}

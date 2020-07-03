@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+Search
+<br>
+{{ message }}
+<table class="table table-hover">
+  <thead>
+   <tr>
+      <th scope="col">ISBN</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Year</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for row in result %}
+    <tr>
+        <th scope="row">{{ row.isbn }}</th>
+        <td><a href="{{ url_for('bookinfo', book_id=row.id) }}"">{{ row.title }}</a></td>
+        <td>{{ row.author }}</td>
+        <td>{{ row.year }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

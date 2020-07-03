@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+  Home Page
+  <br>
+  Welcome {{ message }}
+{% endblock %}
+
+{% block body %}
+<form action={{ url_for('index') }} method="post">
+<div>
+  <label for="logname">Username:</label>
+  <input type="text" id="fname" name="logname" placeholder="Username">
+</div>
+<div>
+  <label for="pass">Password:</label>
+  <input type="password" id="pass" name="pass">
+</div>
+<div>
+  <input type="submit" value="Submit">
+</div>
+</form>
+
+<div>
+  Register
+  <a href={{ url_for('register') }}>here</a>
+</div>
+{% endblock %}

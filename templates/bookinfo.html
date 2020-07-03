@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block heading %}
+<table class="table table-bordered table-sm">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ISBN</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Year</th>
+    </tr>
+    <tbody>
+      <tr>
+        <th scope="row">{{ book.isbn }}</th>
+        <th scope="row">{{ book.title }}</th>
+        <th scope="row">{{ book.author }}</th>
+        <th scope="row">{{ book.year }}</th>
+      </tr>
+    </tbody>
+  </thead>
+</table>
+<form action={{ url_for('bookinfo', book_id=book.id) }} method="post">
+  Rate:
+  {% for i in range(5) %}
+  <input type="radio" name="rating" id="rating" value={{ loop.index }}>{{ i+1 }}
+  {% endfor %}
+
+
+  Average Rating: {{ avg_rating }}
+  ({{ count }} ratings)
+
+    <textarea rows="5" cols="60" name="review" placeholder="Write a review" id="review"></textarea>
+    <input type="submit" value="Submit">
+  </form>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Review</th>
+      <th scope="col">Reviewer</th>
+    </tr>
+    <tbody>
+      {% for row in review %}
+      <tr>
+        {% if row.review != None %}
+      <th scope="row">{{ row.review }}</th>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </thead>
+</table>
+
+  template rendered:{{ rendered }}
+  {{ res }}
+
+{% endblock %}

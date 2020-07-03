@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block heading %}
+Logged in as {{username}}
+
+<div>
+  <form action={{ url_for('searchresult') }} method="post">
+    <input type="text" name="searchbook" placeholdder="Search">
+    <select name="columns" id="columns">
+      <option value="isbn">ISBN</option>
+      <option value="title">Title</option>
+      <option value="author">Author</option>
+      <option value="year">Year</option>
+    </select>
+    <input type="submit" value="Search">
+  </form>
+</div>
+<form action={{ url_for('logout') }} method="get">
+  <button>Logout</button>
+</form>
+
+
+{% endblock %}
